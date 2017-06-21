@@ -1,31 +1,55 @@
 var boxCount = 0;
-var body = 'body';
-var makeDiv = document.createElement("div");
 
-
+function changeColor() {
+    return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     var btn = document.createElement("button");
     btn.className = 'btn';
     document.body.appendChild(btn);
-    document.body.appendChild(makeDiv);
-    
 
     btn.addEventListener('click', function () {
         var makeDiv = document.createElement("div");
         makeDiv.className = 'box';
-        document.body.appendChild(makeDiv);
         makeDiv.id = boxCount;
         boxCount++;
 
-    makeDiv.addEventListener("mouseenter", function() {
-        makeDiv.innerText = makeDiv.id;
-        
-    });
+        makeDiv.addEventListener("click", function () {
+            makeDiv.style.backgroundColor = changeColor();
+        });
 
-        
+        makeDiv.addEventListener("mouseover", function numberShow() {
+            makeDiv.innerText = makeDiv.id;
+        });
+
+        makeDiv.addEventListener("mouseout", function () {
+            makeDiv.innerText = " ";
+        });
+
+        makeDiv.addEventListener("dblclick", function () {
+            var prevSquare = makeDiv.previousElementSibling
+            var nextSquare = makeDiv.nextElementSibling
+            if (makeDiv.id % 2 === 0 && nextSquare !== null) {
+                nextSquare.remove();
+            } else if (makeDiv.id % 2 !== 0 && prevSquare !== btn) {
+                prevSquare.remove();
+            } else {
+                alert('Not an Element');
+            }
+        });
+
+        document.body.appendChild(makeDiv);
     });
 });
+
+
+
+
+
+
+
+
 
 // var boxCount = 0;
 

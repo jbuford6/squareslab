@@ -2,6 +2,10 @@
     height: 6em;
     width: 6em;
     background-color: blue;
-    color: yellow;
+    color: orange;
     font-size: 2em;
+    margin: 4px;
+}
+.random {
+    background-color: blue, yellow, red, orange;
 }
